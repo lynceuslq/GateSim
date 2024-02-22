@@ -32,7 +32,9 @@ Randomness due to parameter estimation is described as prior distributions: $$e 
 
 #### The calculation of the concentration of output protein from intein-splicing events
 
-The process of intein-splicing events can be described by the ODE below, yet the equation is not used directly in the model but the outcome concentration of response protein is engaged. Intein-splicing process described with ODE, $$\frac{dR}{dt}=s(m-R)(n-R)-d*R$$, at the steady state, where $\frac{dR}{dt}=0$， which is $$s(m-R)(n-R)-d*R=0$$, which is, $$R^2-(m+n+d/s)R+mn=0$$, roots for the equation are $$\frac{m+n+d/s - \sqrt{(m+n+d/s)^2-4mn}}{2}$$, and $$\frac{m+n+d/s + \sqrt{(m+n+d/s)^2-4mn}}{2}$$. Then we take the sensible root and let $e=s/d$, the concentration of output protein can be described as $$\frac{m+n+1/e - \sqrt{(m+n+1/e)^2-4mn}}{2}$$[^readme-2]
+The process of intein-splicing events can be described by the ODE below, yet the equation is not used directly in the model but the outcome concentration of response protein is engaged. Intein-splicing process described with ODE: $$\frac{dR}{dt}=s(m-R)(n-R)-d*R$$
+At the steady state, where $$\frac{dR}{dt}=0$$， which is $$s(m-R)(n-R)-d*R=0$$, which is $$R^2-(m+n+d/s)R+mn=0$$
+Roots for the equation are $$\frac{m+n+d/s - \sqrt{(m+n+d/s)^2-4mn}}{2}$$, and $$\frac{m+n+d/s + \sqrt{(m+n+d/s)^2-4mn}}{2}$$. Then we take the sensible root and let $$e=s/d$$, the concentration of output protein can be described as $$\frac{m+n+1/e - \sqrt{(m+n+1/e)^2-4mn}}{2}$$[^readme-2]
 
 [^readme-2]: $m$ and $n$ stand for intein-fused molecules $R$ for spliced proteins, $s$ for synthetic rate and $d$ for protein degradation rate.
 
