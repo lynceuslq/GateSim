@@ -24,7 +24,7 @@ Posterior distribution of observation $$R_{obs} \sim \mathit{ N(R,\sigma_{R})} $
 
 ### Built-in simulation model for intein-splicing AND gates
 
-The simulation of those AND gates can be separated into two parts, which are the production of substrate proteins and the efficiency intein-splicing events. However, the latter reaches the steady state much sooner than protein production, therefore, in this model substrate protein production is described with ODE while intein-splicing events are calculated as the outcome of each time point. The model is demonstrated as equations below. The production of substrate proteins (M and N): $$\frac{dM}{dt} = k_{m} - d*(M-R)$$ $$\frac{dN}{dt} = k_{n} - d*(N-R)$$ Output protein (R) from intein-splicing events (calculation demonstrated in the next part): $$R = \frac{M+N+1/e - \sqrt{(M+N+1/e)^2-4*M*N}}{2}$$
+The simulation of those AND gates can be separated into two parts, which are the production of substrate proteins and the efficiency intein-splicing events. However, the latter reaches the steady state much sooner than protein production, therefore, in this model substrate protein production is described with ODE while intein-splicing events are calculated as the outcome of each time point. The model is demonstrated as equations below. The production of substrate proteins (M and N): $$\frac{dM}{dt} = k_{m} - d*(M-R)$$ $$\frac{dN}{dt} = k_{n} - d*(N-R)$$ Output protein (R) from intein-splicing events (calculation demonstrated in the next part): $$R = \frac{M+N+1/e - \sqrt{(M+N+1/e)^2-4MN}}{2}$$
 
 Stochasticity in protein productions is described as posterior distributions: $$M_{obs} \sim \mathit{ N(M,\sigma_{M})}$$ $$N_{obs} \sim \mathit{ N(N,\sigma_{N})}$$ $$R_{obs} \sim \mathit{ N(R,\sigma_{R})} $$
 
@@ -32,7 +32,7 @@ Randomness due to parameter estimation is described as prior distributions: $$e 
 
 #### The calculation of the concentration of output protein from intein-splicing events
 
-The process of intein-splicing events can be described by the ODE below, yet the equation is not used directly in the model but the outcome concentration of response protein is engaged. Intein-splicing process described with ODE, $\frac{dR}{dt}=s*(m-R)*(n-R)-d*R$ at the steady state, where $\frac{dR}{dt}=0$， which is $s*(m-R)*(n-R)-d*R=0$ which is, $R^2-(m+n+d/s)*R+m*n=0$ roots for the equation are $\frac{m+n+d/s - \sqrt{(m+n+d/s)^2-4*m*n}}{2}$, and $\frac{m+n+d/s + \sqrt{(m+n+d/s)^2-4*m*n}}{2}$. Then we take the sensible root and let $e=s/d$, the concentration of output protein can be described as $\frac{m+n+1/e - \sqrt{(m+n+1/e)^2-4*m*n}}{2}$[^readme-2]
+The process of intein-splicing events can be described by the ODE below, yet the equation is not used directly in the model but the outcome concentration of response protein is engaged. Intein-splicing process described with ODE, $$\frac{dR}{dt}=s(m-R)(n-R)-dR$$, at the steady state, where $\frac{dR}{dt}=0$， which is $$s(m-R)(n-R)-dR=0$$, which is, $$R^2-(m+n+d/s)R+mn=0$$, roots for the equation are $$\frac{m+n+d/s - \sqrt{(m+n+d/s)^2-4mn}}{2}$$, and $$\frac{m+n+d/s + \sqrt{(m+n+d/s)^2-4mn}}{2}$$. Then we take the sensible root and let $e=s/d$, the concentration of output protein can be described as $$\frac{m+n+1/e - \sqrt{(m+n+1/e)^2-4mn}}{2}$$[^readme-2]
 
 [^readme-2]: $m$ and $n$ stand for intein-fused molecules $R$ for spliced proteins, $s$ for synthetic rate and $d$ for protein degradation rate.
 
