@@ -18,14 +18,13 @@ Simulation of senors is similar to NOR gates, yet with Hill equation predicting 
 
 Stochastic simulation of NOR gates can engage the variation of gate parameter estimation, the noise of reactions and the distribution of observation, as formula described below.
 
-Prior distribution of simulation parameters $$\begin{cases}
+Prior distribution of simulation parameters $$
 y_{min} \sim \mathit{N(y_{min,est}, y_{min,sd})} \\
 y_{max} \sim \mathit{N( y_{max,est}, y_{max,sd})} \\
 k_{n} \sim \mathit{N(k_{n,est}, k_{n,sd})} \\
 n \sim \mathit{N(n_{est}, n_{sd})} \\
 d \sim \mathit{N(d_{est}, d_{sd})} \\
-\sigma_{R} \sim \mathit{ N(0,1)}
-\end{cases}$$
+\sigma_{R} \sim \mathit{ N(0,1)}$$
 
 Posterior distribution of observation $$R_{obs} \sim \mathit{ N(R,\sigma_{R})} $$
 
@@ -33,20 +32,18 @@ Posterior distribution of observation $$R_{obs} \sim \mathit{ N(R,\sigma_{R})} $
 
 The simulation of those AND gates can be separated into two parts, which are the production of substrate proteins and the efficiency intein-splicing events. However, the latter reaches the steady state much sooner than protein production, therefore, in this model substrate protein production is described with ODE while intein-splicing events are calculated as the outcome of each time point. The model is demonstrated as equations below. The production of substrate proteins (M and N): $$\frac{dM}{dt} = k_{m} - d*(M-R)$$ $$\frac{dN}{dt} = k_{n} - d*(N-R)$$ Output protein (R) from intein-splicing events (calculation demonstrated in the next part): $$R = \frac{M+N+1/e - \sqrt{(M+N+1/e)^2-4*M*N}}{2}$$
 
-Stochasticity in protein productions is described as posterior distributions: $$\begin{cases}
+Stochasticity in protein productions is described as posterior distributions: $$
 M_{obs} \sim \mathit{ N(M,\sigma_{M})} \\
 N_{obs} \sim \mathit{ N(N,\sigma_{N})} \\
-R_{obs} \sim \mathit{ N(R,\sigma_{R})} \\
-\end{cases}
+R_{obs} \sim \mathit{ N(R,\sigma_{R})} 
 $$
 
-Randomness due to parameter estimation is described as prior distributions: $$\begin{cases}
+Randomness due to parameter estimation is described as prior distributions: $$
 e \sim \mathit{N(e_{est}, e_{sd})} \\
 k_{m} \sim \mathit{N( k_{m,est}, k_{m,sd})} \\
 k_{n} \sim \mathit{N(k_{n,est}, k_{n,sd})} \\
 d \sim \mathit{N(d_{est}, d_{sd})} \\
 \sigma_{i} \sim \mathit{N(0, 1)}
-\end{cases}
 $$
 
 #### The calculation of the concentration of output protein from intein-splicing events
